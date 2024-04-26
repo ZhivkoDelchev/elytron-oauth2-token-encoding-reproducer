@@ -1,0 +1,16 @@
+quarkus:
+  oauth2:
+    role-claim: roles
+    enabled: true
+    introspection-url: http://iam:8080/auth/token/introspect
+    client-id: "none"
+    client-secret: "none"
+  http:
+    auth:
+      policy:
+        role-policy-user:
+          roles-allowed: ROLE_USER
+      permission:
+        roles-example:
+          paths: /secured/*
+          policy: role-policy-user
